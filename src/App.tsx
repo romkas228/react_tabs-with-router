@@ -26,7 +26,7 @@ export const App = () => {
             <Link
               to="/tabs"
               className={cn('navbar-item', {
-                'is-active': currLocation.pathname === '/tabs',
+                'is-active': currLocation.pathname.startsWith('/tabs'),
               })}
             >
               Tabs
