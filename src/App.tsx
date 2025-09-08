@@ -1,8 +1,9 @@
 import 'bulma/css/bulma.css';
 import '@fortawesome/fontawesome-free/css/all.css';
 import './App.scss';
-import cn from 'classnames';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { RoutesEnum } from './types/RoutesEnum';
+
 
 export const App = () => {
   const currLocation = useLocation();
@@ -15,22 +16,19 @@ export const App = () => {
       >
         <div className="container">
           <div className="navbar-brand">
-            <Link
-              to="/"
-              className={cn('navbar-item', {
-                'is-active': currLocation.pathname === '/',
-              })}
+            <NavLink
+              to={RoutesEnum.HOME}
+              className={`navbar-item ${currLocation.pathname === RoutesEnum.HOME && 'is-active'}`}
             >
               Home
-            </Link>
-            <Link
-              to="/tabs"
-              className={cn('navbar-item', {
-                'is-active': currLocation.pathname.startsWith('/tabs'),
-              })}
+            </NavLink>
+
+            <NavLink
+              to={RoutesEnum.TABS}
+              className={`navbar-item ${currLocation.pathname.startsWith(RoutesEnum.TABS) && 'is-active'}`}
             >
               Tabs
-            </Link>
+            </NavLink>
           </div>
         </div>
       </nav>
